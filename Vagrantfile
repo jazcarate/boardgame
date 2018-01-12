@@ -24,7 +24,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--memory", "1536"]
   end
 
-  config.vm.network :forwarded_port, guest: 3000, host: 3000 # Koa
+  config.vm.network :forwarded_port, guest: 5000, host: 5000 # Neutrino pack
 
   config.vm.provision :shell, path: 'provision/os_setup.sh', keep_color: true
   config.vm.provision :shell, path: 'provision/install_yarn.sh', keep_color: true
