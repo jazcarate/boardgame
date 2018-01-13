@@ -1,7 +1,8 @@
-import { Client as client } from 'boardgame.io/client'
-import { Game as game } from 'boardgame.io/core'
+import { Client } from 'boardgame.io/client'
+import { Game } from 'boardgame.io/core'
+import { Board } from './Board'
 
-const TicTacToe = game({
+const TicTacToe = Game({
   setup: () => ({ cells: Array(9).fill(null) }),
 
   moves: {
@@ -13,6 +14,9 @@ const TicTacToe = game({
   }
 })
 
-const App = client({ game: TicTacToe })
+const App = Client({
+  game: TicTacToe,
+  board: Board
+})
 
 export default App
