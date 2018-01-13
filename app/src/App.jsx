@@ -1,5 +1,5 @@
-import { client } from 'boardgame.io/client'
-import { game } from 'boardgame.io/core'
+import { Client as client } from 'boardgame.io/client'
+import { Game as game } from 'boardgame.io/core'
 
 const TicTacToe = game({
   setup: () => ({ cells: Array(9).fill(null) }),
