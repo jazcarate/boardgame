@@ -19,12 +19,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = 'ubuntu/artful64'  # 17.10
   config.vm.hostname = 'rails-dev-box'
 
-  # Configurar VBox para darle 1.5GB de ram
   config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "1536"]
+    vb.customize ["modifyvm", :id, "--memory", "512"]
   end
 
   config.vm.network :forwarded_port, guest: 5000, host: 5000 # Neutrino pack
+  config.vm.network :forwarded_port, guest: 9797, host: 9797 # Koa server
 
   config.vm.provision :shell, path: 'provision/os_setup.sh', keep_color: true
   config.vm.provision :shell, path: 'provision/install_yarn.sh', keep_color: true
