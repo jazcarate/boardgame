@@ -1,0 +1,1 @@
+web: cd app && babel-node tools/publicServer.js  
