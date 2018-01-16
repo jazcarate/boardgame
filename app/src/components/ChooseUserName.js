@@ -28,7 +28,7 @@ class ChooseUserName extends React.Component {
           <FormControl type="text" defaultValue={this.props.userName} onChange={this.updateState.bind(this)}/>
           {' '}
           <Button type="submit" onClick={this.triggerChooseUserName.bind(this)}>
-            change username
+            Change
           </Button>
         </FormGroup>
       </Form>
@@ -42,7 +42,7 @@ class ChooseUserName extends React.Component {
           <FormControl type="text" defaultValue={this.props.userName} disabled/>
           {' '}
           <Button type="submit" onClick={this.toggleEditing.bind(this)}>
-            change username
+            Change
           </Button>
         </FormGroup>
       </Form>

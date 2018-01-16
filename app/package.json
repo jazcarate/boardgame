@@ -6,10 +6,10 @@
   "scripts": {
     "test": "test",
     "start": "npm-run-all --parallel open:src lint:watch",
-    "open:src": "babel-node tools/server.js --history-api-fallback",
+    "open:src": "babel-watch --watch src --use-polling tools/devServer.js -- --history-api-fallback",
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
-    "lint:watch": "npm run lint -- --watch",
-    "clean-build": "npm run remove-build && mkdir build",
+    "lint:watch": "CHOKIDAR_USEPOLLING=true yarn run lint -- --watch",
+    "clean-build": "yarn run remove-build && mkdir build",
     "remove-build": "node_modules/.bin/rimraf ./build",
     "build:html": "babel-node tools/buildHtml.js",
     "prebuild": "npm-run-all clean-build lint build:html",
