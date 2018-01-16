@@ -1,12 +1,12 @@
 import React from "react";
-import {Button} from 'react-bootstrap'
-import FileSaver from 'file-saver'
+import {Button} from 'react-bootstrap';
+import FileSaver from 'file-saver';
 
 class SaveButton extends React.Component {
 
   constructor(props) {
-    super(props)
-    this.state = {text: this.props.text, title: this.props.title, lang: this.props.lang}
+    super(props);
+    this.state = {text: this.props.text, title: this.props.title, lang: this.props.lang};
   }
 
   fileExtension(lang) {
@@ -20,16 +20,16 @@ class SaveButton extends React.Component {
       "erlang": "erl",
       "coffeescript": "coffee",
       "crystal": "cr"
-    }
-    return fileExtensionDict[lang]
+    };
+    return fileExtensionDict[lang];
   }
 
   fileNameify(name) {
-    return name.split(" ").join("_")
+    return name.split(" ").join("_");
   }
  
   componentWillReceiveProps(nextProps) {
-    this.setState({text: nextProps.text, title: nextProps.title, lang: nextProps.lang})
+    this.setState({text: nextProps.text, title: nextProps.title, lang: nextProps.lang});
   }
   saveCode(e) {
     e.preventDefault();
@@ -41,10 +41,10 @@ class SaveButton extends React.Component {
   render() {
     return (
       <Button className="btn-primary col-lg-12" onClick={this.saveCode.bind(this)}>save</Button>
-    )
+    );
   }
 } 
 
 
-export default SaveButton
+export default SaveButton;
 

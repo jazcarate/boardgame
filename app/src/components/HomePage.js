@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {Link, browserHistory} from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -11,7 +11,7 @@ import ChooseUserName from './ChooseUserName';
 class HomePage extends React.Component {
   componentDidMount() {
     if (this.props.challenges.length == 0) {
-      this.props.actions.getChallenges()
+      this.props.actions.getChallenges();
     }
   }
 
@@ -24,16 +24,16 @@ class HomePage extends React.Component {
         <ChooseUserName userName={this.props.userName} chooseUserName={this.chooseUserName.bind(this)}/>
         <ChallengesList challenges={this.props.challenges} />
       </div>
-    )
+    );
   }
 }
 
 function mapStateToProps(state) {
-  return {challenges: state.challenges, userName: state.currentUser}
+  return {challenges: state.challenges, userName: state.currentUser};
 }
 
 function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators(Object.assign(userActions, challengesActions), dispatch)}
+  return {actions: bindActionCreators(Object.assign(userActions, challengesActions), dispatch)};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

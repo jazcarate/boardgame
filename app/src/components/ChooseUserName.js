@@ -1,24 +1,24 @@
-import React from 'react'
-import {Form, FormGroup, FormControl, Button, ControlLabel} from 'react-bootstrap'
+import React from 'react';
+import {Form, FormGroup, FormControl, Button, ControlLabel} from 'react-bootstrap';
 
 class ChooseUserName extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = {userName: '', editing: false}
+    super(props);
+    this.state = {userName: '', editing: false};
   }
   triggerChooseUserName(e) {
-    e.preventDefault()
-    this.props.chooseUserName(this.state.userName)
-    this.setState({editing: false})
+    e.preventDefault();
+    this.props.chooseUserName(this.state.userName);
+    this.setState({editing: false});
   }
 
   updateState(e) {
-    this.setState({userName: e.target.value})
+    this.setState({userName: e.target.value});
   }
 
   toggleEditing(e) {
-    e.preventDefault()
-    this.setState({editing: true})
+    e.preventDefault();
+    this.setState({editing: true});
   }
 
   editForm() {
@@ -32,7 +32,7 @@ class ChooseUserName extends React.Component {
           </Button>
         </FormGroup>
       </Form>
-    )
+    );
   }
 
   editButton() {
@@ -46,7 +46,7 @@ class ChooseUserName extends React.Component {
           </Button>
         </FormGroup>
       </Form>
-    )
+    );
   }
 
   render() {  
@@ -54,7 +54,7 @@ class ChooseUserName extends React.Component {
       <div>
         {this.state.editing ? this.editForm() : this.editButton()}
       </div>
-    )
+    );
   }
 }
 

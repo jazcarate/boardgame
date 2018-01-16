@@ -5,6 +5,6 @@ import currentUser from './currentUserReducer';
 const rootReducer = combineReducers({
   currentUser,
   challenges
-})
+});
 
 export default rootReducer;

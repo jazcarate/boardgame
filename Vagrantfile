@@ -20,11 +20,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = 'rails-dev-box'
 
   config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "512"]
+    vb.customize ["modifyvm", :id, "--memory", "1024"]
   end
 
-  config.vm.network :forwarded_port, guest: 5000, host: 5000 # Neutrino pack
-  config.vm.network :forwarded_port, guest: 9797, host: 9797 # Koa server
+  config.vm.network :forwarded_port, guest: 9797, host: 9797 # Express server
 
   config.vm.provision :shell, path: 'provision/os_setup.sh', keep_color: true
   config.vm.provision :shell, path: 'provision/install_yarn.sh', keep_color: true

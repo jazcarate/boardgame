@@ -1,5 +1,5 @@
-const path = require('path')  
-const webpack = require('webpack')
+const path = require('path');  
+const webpack = require('webpack');
 
 export default {  
   devtool: 'source-map',
@@ -46,4 +46,4 @@ export default {
         loader: 'file'}
     ]
   }
-}
+};

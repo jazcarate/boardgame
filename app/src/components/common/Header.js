@@ -1,5 +1,5 @@
-import React from 'react'
-import {Navbar, Nav, NavItem} from 'react-bootstrap'
+import React from 'react';
+import {Navbar, Nav, NavItem} from 'react-bootstrap';
 import {Link} from 'react-router';
 
 
@@ -15,7 +15,7 @@ const Header = () => {
         <NavItem><Link to={'/'}>challenges</Link></NavItem>
       </Nav>
     </Navbar>
-  )
-}
+  );
+};
 
 export default Header;
