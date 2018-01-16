@@ -12,10 +12,10 @@ fs.readFile('src/index.html', 'utf8', (err, markup) => {
   const $ = cheerio.load(markup);
   $('head').prepend('');
 
-  fs.writeFile('public/index.html', $.html(), 'utf8', function (err) {
+  fs.writeFile('build/index.html', $.html(), 'utf8', function (err) {
     if (err) {
       return console.log(err);
     }
-    console.log('index.html written to /public'.green);
+    console.log('index.html written to /build'.green);
   });
 });

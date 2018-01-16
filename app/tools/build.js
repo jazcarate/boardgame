@@ -25,7 +25,7 @@ webpack(webpackConfig).run((err, stats) => {
   }
 
   console.log(`Webpack stats: ${stats}`);
-  console.log('Your app has been compiled in production mode and written to /public.'.green);
+  console.log('Your app has been compiled in production mode and written to /build.'.green);
 
   return 0;
 });

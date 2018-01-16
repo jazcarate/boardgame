@@ -9,10 +9,10 @@ const port = process.env.PORT || 9797;
 const app = express();
 
 app.use(compression());  
-app.use(express.static('public'));  
+app.use(express.static('build'));  
 
 app.get('*', function(req, res) {  
-  res.sendFile(path.join(__dirname, '../public/index.html'));
+  res.sendFile(path.join(__dirname, '../build/index.html'));
 });
 
 const server = app.listen(port, function(err) {  
