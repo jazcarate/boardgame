@@ -1,5 +1,6 @@
 import React from 'react';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import {Link} from 'react-router';
 
 
@@ -11,8 +12,11 @@ const Header = () => {
           <a href="/">Code Pair</a>
         </Navbar.Brand>
       </Navbar.Header>
+      <LinkContainer to={'/'}>
+        <NavItem>challenges</NavItem>
+      </LinkContainer>
       <Nav>
-        <NavItem><Link to={'/'}>challenges</Link></NavItem>
+        <NavItem>lala</NavItem>
       </Nav>
     </Navbar>
   );
