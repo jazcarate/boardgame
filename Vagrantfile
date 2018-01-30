@@ -17,7 +17,7 @@ end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = 'ubuntu/artful64'  # 17.10
-  config.vm.hostname = 'rails-dev-box'
+  config.vm.hostname = 'boardgame-dev-box'
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "1024"]
