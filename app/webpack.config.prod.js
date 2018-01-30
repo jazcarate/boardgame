@@ -1,5 +1,6 @@
 const path = require('path');  
 const webpack = require('webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 export default {  
   devtool: 'source-map',
@@ -15,6 +16,7 @@ export default {
   },
 
   plugins: [
+    new BundleAnalyzerPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
@@ -25,7 +27,7 @@ export default {
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production'),
-        'API_HOST': JSON.stringify('https://code-pair-api.herokuapp.com')
+        'API_HOST': JSON.stringify('https://boardgame-frontend.com') //TODO
       }
     })
   ],

@@ -30,7 +30,7 @@ export default {
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('development'),
-        'API_HOST': JSON.stringify('http://localhost:5000')
+        'API_HOST': JSON.stringify('http://localhost:9797')
       }
     })
   ],
