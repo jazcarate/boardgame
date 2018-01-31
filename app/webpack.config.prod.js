@@ -1,6 +1,6 @@
 const path = require('path');  
 const webpack = require('webpack');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 export default {  
   devtool: 'source-map',
@@ -16,7 +16,7 @@ export default {
   },
 
   plugins: [
-    new BundleAnalyzerPlugin(),
+    new ExtractTextPlugin("style.css"),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
@@ -37,11 +37,8 @@ export default {
       { test: /\.js?$/,
         loader: 'babel',
         exclude: /node_modules/ },
-      {test: /(\.css)$/, 
-        loaders: ['style', 'css']},
-      { test: /\.scss?$/,
-        loader: 'style!css!sass',
-        include: path.join(__dirname, 'src', 'styles') },
+      {test: /(\.css)$/,
+        loader: ExtractTextPlugin.extract('style', 'css')},
       { test: /\.png$/,
         loader: 'file' },
       { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
