@@ -35,6 +35,8 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));  
 
+app.use(express.static('public')); 
+
 app.get('/api/rooms', function(req, res) {
   res.json(ROOMS);
 });
