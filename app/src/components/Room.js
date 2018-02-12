@@ -143,7 +143,7 @@ class Room extends React.Component {
   }
 
   render() {
-    var options = {
+    const options = {
         lineNumbers: true,
         mode: this.state.mode,
         theme: this.state.theme

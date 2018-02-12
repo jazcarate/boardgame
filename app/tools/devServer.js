@@ -1,4 +1,5 @@
 import express from 'express';  
+import bodyParser from 'body-parser';
 import webpack from 'webpack';  
 import path from 'path';  
 import config from '../webpack.config.dev';  
@@ -17,6 +18,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));  
 
+app.use(bodyParser.json());
 app.use(express.static('public')); 
 
 server(app);

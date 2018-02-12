@@ -1,4 +1,5 @@
 import express from 'express';  
+import bodyParser from 'body-parser';
 import path from 'path';
 import compression from 'compression';  
 import server from './server'; 
@@ -8,6 +9,7 @@ import server from './server';
 const app = express();
 
 app.use(compression());  
+app.use(bodyParser.json());
 app.use(express.static('build'));
 app.use(express.static('public')); 
 
