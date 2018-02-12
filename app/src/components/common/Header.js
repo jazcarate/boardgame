@@ -9,15 +9,12 @@ const Header = () => {
     <Navbar>
       <Navbar.Header>
         <Navbar.Brand>
-          <a href="/">Code Pair</a>
+          <a href="/">Resist'em</a>
         </Navbar.Brand>
       </Navbar.Header>
       <LinkContainer to={'/'}>
-        <NavItem>challenges</NavItem>
+        <NavItem>Start</NavItem>
       </LinkContainer>
-      <Nav>
-        <NavItem>lala</NavItem>
-      </Nav>
     </Navbar>
   );
 };

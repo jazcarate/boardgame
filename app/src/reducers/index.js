@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux';
-import challenges from './challengesReducer';
+import rooms from './roomsReducer';
 import currentUser from './currentUserReducer';
 
 const rootReducer = combineReducers({
   currentUser,
-  challenges
+  rooms
 });
 
 export default rootReducer;

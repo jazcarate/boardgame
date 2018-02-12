@@ -1,8 +1,11 @@
 import open from 'open';  
+import rooms from './server/api/rooms';  
 
 /* eslint-disable no-console */
 
 export default function(app){
+  app.use('/api/rooms', rooms);
+
   const port = process.env.PORT || 9797;  
   const server = app.listen(port, function(err) {  
     if (err) {

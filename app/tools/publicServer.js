@@ -11,9 +11,10 @@ app.use(compression());
 app.use(express.static('build'));
 app.use(express.static('public')); 
 
+server(app);
+
 app.get('*', function(req, res) {  
   res.sendFile(path.join(__dirname, '../build/index.html'));
 });
 
 
-server(app);

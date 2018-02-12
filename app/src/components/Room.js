@@ -8,7 +8,7 @@ import UserList from './UserList';
 import SaveButton from './SaveButton';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as actions from '../actions/challengesActions';
+import * as actions from '../actions/roomActions';
 import {Button} from 'react-bootstrap';
  
 import 'codemirror/lib/codemirror.css';
@@ -50,30 +50,30 @@ class Room extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.challenge.id == undefined) {
-      this.props.actions.getChallenges();
+    if (this.props.room.id == undefined) {
+      this.props.actions.getRooms();
     } else {
       const user = this.props.currentUser;
       sessionStorage.setItem('currentUser', user);
       const users = [...this.state.users, this.props.currentUser];
-      socket.emit('room', {room: this.props.challenge.id, user: user});
+      socket.emit('room', {room: this.props.room.id, user: user});
       this.setState({users: users});
     }
   }
 
   componentWillUnmount() {
-    socket.emit('leave room', {room: this.props.challenge.id, user: this.props.currentUser});
+    socket.emit('leave room', {room: this.props.room.id, user: this.props.currentUser});
   }
 
   componentWillReceiveProps(nextProps) {
     const user = nextProps.currentUser;
     const users = [...this.state.users, user];
-    socket.emit('room', {room: nextProps.challenge.id, user: user});
+    socket.emit('room', {room: nextProps.room.id, user: user});
     this.setState({users: users});
   }
 
   sendUsersAndCode() {
-    socket.emit('send users and code', {room: this.props.challenge.id, users: this.state.users, code: this.state.code});
+    socket.emit('send users and code', {room: this.props.room.id, users: this.state.users, code: this.state.code});
   }
 
   removeUser(user) {
@@ -120,7 +120,7 @@ class Room extends React.Component {
   codeIsHappening(newCode) {
     this.updateCodeForCurrentUser(newCode);
     this.updateCurrentlyTyping();
-    socket.emit('coding event', {code: newCode, room: this.props.challenge.id, currentlyTyping: this.props.currentUser});
+    socket.emit('coding event', {code: newCode, room: this.props.room.id, currentlyTyping: this.props.currentUser});
   }
 
   updateCurrentlyTyping() {
@@ -129,7 +129,7 @@ class Room extends React.Component {
 
   changeMode(newMode) {
     this.updateModeInState(newMode);
-    socket.emit('change mode', {mode: newMode, room: this.props.challenge.id});
+    socket.emit('change mode', {mode: newMode, room: this.props.room.id});
   }
 
   changeTheme(newTheme) {
@@ -139,7 +139,7 @@ class Room extends React.Component {
   clearCode(e) {
     e.preventDefault();
     this.setState({code: ''});
-    socket.emit('coding event', {code: '', room: this.props.challenge.id});
+    socket.emit('coding event', {code: '', room: this.props.room.id});
   }
 
   render() {
@@ -150,14 +150,14 @@ class Room extends React.Component {
     };
     return (
       <div>
-        <h1>{this.props.challenge.title}</h1>
-        <p>{this.props.challenge.description}</p>
+        <h1>{this.props.room.title}</h1>
+        <p>{this.props.room.description}</p>
         <UserList users={this.state.users} currentlyTyping={this.state.currentlyTyping}/>
         <ModeSelect mode={this.state.mode} changeMode={this.changeMode.bind(this)}/>
         <ThemeSelect theme={this.state.theme} changeTheme={this.changeTheme.bind(this)} />
         <Codemirror value={this.state.code} onChange={this.codeIsHappening.bind(this)} options={options} />
         <br/>
-        <SaveButton text={this.state.code} lang={this.state.mode} title={this.props.challenge.title}/>
+        <SaveButton text={this.state.code} lang={this.state.mode} title={this.props.room.title}/>
         <br/>
         <Button onClick={this.clearCode.bind(this)} className="col-lg-12">clear code</Button>
       </div>
@@ -167,12 +167,12 @@ class Room extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
-  if (state.challenges.length > 0) {
-    const challenge = state.challenges.filter(challenge => {return challenge.id == ownProps.params.id;})[0];
+  if (state.rooms.length > 0) {
+    const room = state.rooms.filter(room => {return room.id == ownProps.params.id;})[0];
     const userName = sessionStorage.currentUser || state.currentUser;
-    return {challenge: challenge, currentUser: userName};
+    return {room: room, currentUser: userName};
   } else {
-    return {challenge: {title: '', description: '', source: ''}, currentUser: ''};
+    return {room: {title: '', description: '', source: ''}, currentUser: ''};
   }
 }
 
