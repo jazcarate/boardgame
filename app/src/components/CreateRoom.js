@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import words from 'random-words';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as roomActions from '../actions/roomActions';
+import * as roomsActions from '../actions/roomsActions';
 import {Form, FormGroup, FormControl, Button, ControlLabel} from 'react-bootstrap';
 
 function generateID(){
@@ -43,7 +43,7 @@ function mapStateToProps(state) {
 }
   
 function mapDispatchToProps(dispatch) {
-    return {actions: bindActionCreators(Object.assign(roomActions), dispatch)};
+    return {actions: bindActionCreators(Object.assign(roomsActions), dispatch)};
 }
 
 CreateRoom.propTypes = {

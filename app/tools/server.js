@@ -1,5 +1,6 @@
 import open from 'open';  
 import rooms from './server/api/rooms';  
+import * as constants from '../src/constants';
 
 /* eslint-disable no-console */
 
@@ -18,8 +19,31 @@ export default function(app){
   const io = require('socket.io')(server);
 
   io.on('connection', (socket) => {
-    console.log('a user connected');
-  
+    console.log('a user connected'); 
+
+    socket.on('action', (action) => {
+      if(action.type.startsWith(constants.OUTGOING)){
+        const type = action.type.replace(constants.OUTGOING, '');
+        action.type = action.type.replace(constants.OUTGOING, constants.INCOMING);
+
+        if(type === "CREATE_ROOM"){
+          rooms.addRoom(action.payload);
+          socket.broadcast.emit('action', action);
+        }
+
+        if(type === "JOIN_ROOM"){
+          rooms.joinRoom(action.payload.id, action.payload.player);
+          socket.broadcast.emit('action', action);
+        }
+        
+        //Room specific
+        const typeArr = type.split('/')
+        if(typeArr.length === 3){
+          socket.broadcast.to(typeArr[1]).emit(action);
+        }
+      }
+    });
+
     socket.on('disconnect', () => {
       console.log('user disconnected');
     });

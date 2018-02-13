@@ -12,6 +12,7 @@ const ModeSelect = (props) => {
       return <option key={i} value={mode}>{mode}</option>;
     });
   }
+  
   return (
     <FormGroup controlId="formControlsSelect" onChange={triggerChangeMode}>
       <ControlLabel>change language</ControlLabel>

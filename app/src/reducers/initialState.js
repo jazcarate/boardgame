@@ -1,6 +1,7 @@
 const initialState = {
   rooms: [],
-  currentUser: ''
+  currentUser: '',
+  room: {}
 };
 
 export default initialState;

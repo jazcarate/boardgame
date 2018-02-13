@@ -31,6 +31,7 @@ class SaveButton extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.setState({text: nextProps.text, title: nextProps.title, lang: nextProps.lang});
   }
+  
   saveCode(e) {
     e.preventDefault();
     const code = this.state.text;

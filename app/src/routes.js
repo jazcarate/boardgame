@@ -7,6 +7,6 @@ import Room from './components/Room';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
-    <Route path="/rooms/:id" component={Room} />
+    <Route path="/room/:id" component={Room} />
   </Route>
 );

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Link, browserHistory} from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as roomActions from '../actions/roomActions';
+import * as roomsActions from '../actions/roomsActions';
 import * as userActions from '../actions/userActions';
 import RoomsList from './RoomsList';
 import CreateRoom from './CreateRoom';
@@ -43,7 +43,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators(Object.assign(userActions, roomActions), dispatch)};
+  return {actions: bindActionCreators(Object.assign(userActions, roomsActions), dispatch)};
 }
 
 

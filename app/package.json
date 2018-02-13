@@ -33,6 +33,7 @@
     "react-router-bootstrap": "^0.23.3",
     "redux": "^3.5.2",
     "redux-promise": "^0.5.3",
+    "redux-socket.io": "^1.4.0",
     "redux-thunk": "^2.1.0",
     "serve-favicon": "^2.3.0",
     "socket.io": "^1.5.1"
